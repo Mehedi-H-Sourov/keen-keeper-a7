@@ -5,13 +5,13 @@ import { createContext, useContext, useState, useEffect } from "react";
 const TimelineContext = createContext();
 
 export const TimelineProvider = ({ children }) => {
-  const [timeline, setTimeline] = useState([]);
-
-  // Load from localStorage
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("timeline")) || [];
-   
-  }, []);
+  const [timeline, setTimeline] = useState(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("timeline");
+      return stored ? JSON.parse(stored) : [];
+    }
+    return [];
+  });
 
   // Saving data  to localStorage whenever updating the ui....
   useEffect(() => {
