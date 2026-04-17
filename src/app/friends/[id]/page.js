@@ -137,29 +137,29 @@ const page = async ({ params }) => {
        
         <div className="bg-white rounded-xl p-4 shadow-sm">
 
-  <h3 className="text-sm font-semibold text-gray-700 mb-3">
+  <h3 className="text-sm font-semibold text-gray-700 mb-2">
     Quick Check-In
   </h3>
 
-  <div className="grid grid-cols-3 gap-4 py-3.5">
+  <div className="grid grid-cols-3 gap-4 py-2.5">
     <ActionHandler friend={friend} type="Call">
 
     <div className="bg-gray-50 rounded-lg p-4 text-center hover:bg-gray-100 transition cursor-pointer">
-      <BiSolidPhoneCall size={50} className="mx-auto text-gray-600" />
+      <BiSolidPhoneCall size={40} className="mx-auto text-gray-600" />
       <p className="mt-2 text font-semibold text-gray-600">Call</p>
     </div>
     </ActionHandler>
 
     <ActionHandler friend={friend} type="Text">
     <div className="bg-gray-50 rounded-lg p-4 text-center hover:bg-gray-100 transition cursor-pointer">
-      <PiChatCenteredTextFill size={50} className="mx-auto text-xl text-gray-600" />
+      <PiChatCenteredTextFill size={40} className="mx-auto text-xl text-gray-600" />
       <p className="mt-2 text font-semibold text-gray-600">Text</p>
     </div>
     </ActionHandler>
 
     <ActionHandler friend={friend} type="Video">
     <div className="bg-gray-50 rounded-lg p-4 text-center hover:bg-gray-100 transition cursor-pointer">
-      <FaVideo size={50} className="mx-auto text-gray-600" />
+      <FaVideo size={40} className="mx-auto text-gray-600" />
       <p className="mt-2 text font-semibold  text-gray-600">Video</p>
     </div>
 </ActionHandler>

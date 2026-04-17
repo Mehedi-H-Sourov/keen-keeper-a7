@@ -1,7 +1,7 @@
 "use client";
 
 import { useTimeline } from "@/components/TimelineContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FcVideoCall } from "react-icons/fc";
 import { HiOutlineChatBubbleBottomCenterText } from "react-icons/hi2";
 import { MdWifiCalling3 } from "react-icons/md";
@@ -10,24 +10,16 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 const TimelineList = () => {
   const { timeline } = useTimeline();
     
-      useEffect(() => {
-        const data = JSON.parse(localStorage.getItem("timeline")) || [];
-       
-    
-      }, []);
     
       const [filter, setFilter] = useState("All");
       const [open, setOpen] = useState(false);
     
       const filteredTimeline = filter === "All" ? timeline : timeline.filter((item) => item.type === filter);
 
-  if (timeline.length === 0) {
-    return <p className="text-gray-400">No interactions yet</p>;
-  }
 
 
       return (
-        <div className="px-6 py-10">
+        <div className=" max-w-7xl mx-auto px-6 py-10">
             
           <h1 className="text-4xl font-bold mb-6">Timeline</h1>
     
@@ -54,18 +46,22 @@ const TimelineList = () => {
           </div>
     
           {timeline.length === 0 ? (
-            <div className="bg-gray-100 shadow p-50 text-center space-y-4">
-              <h2 className="text-4xl font-bold text-gray-600">.....No Interactions Yet...</h2>
-              <button href="/" className="btn btn-dash">Go to Home</button>
+            <div className="my-10 shadow p-8 rounded border border-gray-200 space-y-2">
+              <h2 className="font-semibold text-2xl mb-10 text-center">Timeline of Call/Text/Video</h2>
+               <p className="text-center text-gray-400">
+          No interaction data yet
+        </p>
             </div>
-          ) : (
+          ) 
+          
+          : (
             <div>
               {filteredTimeline.map((item) => (
                
         <div key={item.id} className="bg-white p-4 gap-150 rounded shadow-sm flex justify-between items-center mt-3">
           
           
-          <div className=" flex gap-2 items-center">
+          <div className=" flex gap-4 items-center">
         <div className="text-xl text-gray-600 ">
       {item.type === "Call" && <MdWifiCalling3 size={40} />}
       {item.type === "Text" && <HiOutlineChatBubbleBottomCenterText size={40} />}

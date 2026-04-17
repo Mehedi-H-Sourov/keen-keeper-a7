@@ -1,8 +1,13 @@
 "use client";
 import { toast } from "react-hot-toast";
+import { useTimeline } from "@/components/TimelineContext";
+import { useRouter } from "next/navigation";
 
 
 const ActionHandler = ({ friend, type, children }) => {
+const { addEntry } = useTimeline();
+  const router = useRouter();
+
   const handleClick = () => {
     const newEntry = {
       id: Date.now(),
@@ -11,15 +16,10 @@ const ActionHandler = ({ friend, type, children }) => {
       date: new Date().toISOString(),
     };
 
-    const existing =
-      JSON.parse(localStorage.getItem("timeline")) || [];
-
-    localStorage.setItem(
-      "timeline",
-      JSON.stringify([newEntry, ...existing])
-    );
+    addEntry(newEntry); 
 
     toast.success(`${type} added to timeline`);
+
   };
 
   return (
