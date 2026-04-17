@@ -5,12 +5,13 @@ import { FiArchive, FiClock, FiMessageSquare, FiTrash2, FiVideo } from "react-ic
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { PiChatCenteredTextFill } from "react-icons/pi";
 import { FaVideo } from "react-icons/fa6";
+import ActionHandler from "@/components/ActionHandler";
 
 const page = async ({ params }) => {
   const { id } = await params;
 
   const friend = friends.find(
-    (f) => f.id === Number(id)
+    (f) => f.id ==id
   );
 
   if (!friend) return notFound();
@@ -134,22 +135,27 @@ const page = async ({ params }) => {
   </h3>
 
   <div className="grid grid-cols-3 gap-4 py-3.5">
+    <ActionHandler friend={friend} type="Call">
 
     <div className="bg-gray-50 rounded-lg p-4 text-center hover:bg-gray-100 transition cursor-pointer">
       <BiSolidPhoneCall size={50} className="mx-auto text-gray-600" />
       <p className="mt-2 text font-semibold text-gray-600">Call</p>
     </div>
+    </ActionHandler>
 
+    <ActionHandler friend={friend} type="Text">
     <div className="bg-gray-50 rounded-lg p-4 text-center hover:bg-gray-100 transition cursor-pointer">
       <PiChatCenteredTextFill size={50} className="mx-auto text-xl text-gray-600" />
       <p className="mt-2 text font-semibold text-gray-600">Text</p>
     </div>
+    </ActionHandler>
 
+    <ActionHandler friend={friend} type="Video">
     <div className="bg-gray-50 rounded-lg p-4 text-center hover:bg-gray-100 transition cursor-pointer">
       <FaVideo size={50} className="mx-auto text-gray-600" />
       <p className="mt-2 text font-semibold  text-gray-600">Video</p>
     </div>
-
+</ActionHandler>
   </div>
 
 </div>
