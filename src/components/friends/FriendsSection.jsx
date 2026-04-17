@@ -1,7 +1,7 @@
 import FriendsList from "./FriendsList";
 
 const FriendsSection = async () => {
-  const res = await fetch("http://localhost:3000/data.json");
+  const res = await fetch("keenkeeper-blush.vercel.app", { cache: "no-store" });
   const friends = await res.json();
 
   return (
